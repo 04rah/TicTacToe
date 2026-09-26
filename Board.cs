@@ -62,5 +62,8 @@ public class Board
 
         return true;
     }
-
+    public char[] GetCells()
+    {
+        return cells;
+    }
 }

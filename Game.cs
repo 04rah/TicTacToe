@@ -12,32 +12,23 @@ public class Game
         this.player2 = player2;
         this.currentPlayer = player1;
     }
-    public void Start()
+
+    public bool MakeMove(int position)
     {
-        while (true)
-        {
-            board.Display();
-
-            PlayTurn();
-
-            if (board.IsWinner(currentPlayer.Symbol))
-            {
-                board.Display();
-                Console.WriteLine($"{currentPlayer.Name} wins!");
-                break;
-            }
-
-            if (board.IsFull())
-            {
-                board.Display();
-                Console.WriteLine("The game is a draw!");
-                break;
-            }
-
-            SwitchTurn();
-        }
+        return board.MakeMove(position, currentPlayer.Symbol);
     }
-    private void SwitchTurn()
+
+    public bool HasWinner()
+    {
+        return board.IsWinner(currentPlayer.Symbol);
+    }
+
+    public bool IsDraw()
+    {
+        return board.IsFull();
+    }
+
+    public void SwitchTurn()
     {
         if (currentPlayer == player1)
         {
@@ -48,30 +39,18 @@ public class Game
             currentPlayer = player1;
         }
     }
-    private void PlayTurn()
+
+    public Player GetCurrentPlayer()
     {
-        bool moveSuccessful = false;
-
-        while (!moveSuccessful)
-        {
-            Console.WriteLine($"{currentPlayer.Name}'s turn ({currentPlayer.Symbol})");
-            Console.Write("Enter position (0-8): ");
-
-            string? input = Console.ReadLine();
-
-            if (!int.TryParse(input, out int position))
-            {
-                Console.WriteLine("Please enter a valid number.");
-                continue;
-            }
-
-            moveSuccessful = board.MakeMove(position, currentPlayer.Symbol);
-
-            if (!moveSuccessful)
-            {
-                Console.WriteLine("Invalid move. Try again.");
-            }
-        }
+        return currentPlayer;
     }
 
+    public void DisplayBoard()
+    {
+        board.Display();
+    }
+    public char[] GetBoard()
+    {
+        return board.GetCells();
+    }
 }
