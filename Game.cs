@@ -4,6 +4,7 @@ public class Game
     private Player player1;
     private Player player2;
     private Player currentPlayer;
+    private bool gameOver;
 
     public Game(Player player1, Player player2)
     {
@@ -15,17 +16,32 @@ public class Game
 
     public bool MakeMove(int position)
     {
+        if (gameOver)
+        {
+            return false;
+        }
+
         return board.MakeMove(position, currentPlayer.Symbol);
     }
-
     public bool HasWinner()
     {
-        return board.IsWinner(currentPlayer.Symbol);
-    }
+        if (board.IsWinner(currentPlayer.Symbol))
+        {
+            gameOver = true;
+            return true;
+        }
 
+        return false;
+    }
     public bool IsDraw()
     {
-        return board.IsFull();
+        if (board.IsFull())
+        {
+            gameOver = true;
+            return true;
+        }
+
+        return false;
     }
 
     public void SwitchTurn()
@@ -52,5 +68,9 @@ public class Game
     public char[] GetBoard()
     {
         return board.GetCells();
+    }
+    public bool IsGameOver()
+    {
+        return gameOver;
     }
 }
