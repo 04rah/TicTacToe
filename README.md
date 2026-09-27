@@ -1,27 +1,51 @@
 # Tic-Tac-Toe
 
-A console-based Tic-Tac-Toe game built with C# and .NET.
+A Tic-Tac-Toe game built with **C# and .NET**, first developed as a console application and then extended into an **ASP.NET Core Web API with a browser-based UI**.
 
-## Features
+The project is mainly focused on learning how a frontend communicates with a backend API and how game logic can be separated into reusable classes and services.
 
-- Two-player gameplay
-- X and O symbols
-- Input validation
-- Invalid move handling
-- Winner detection
-- Draw detection
-- Turn switching
+---
+
+## Tech Stack
+
+- C#
+- .NET 10
+- ASP.NET Core Web API
+- HTML
+- CSS
+- JavaScript
+- REST APIs
+- Git / GitHub
+
+---
 
 ## Project Structure
 
-- `Program.cs` - Creates the players and starts the game
-- `Game.cs` - Controls the game flow and player turns
-- `Board.cs` - Manages the board and game rules
-- `Player.cs` - Represents a player
-
-## How to Run
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/04rah/TicTacToe.git
+```text
+TicTacToe
+│
+├── TicTacToe.slnx
+├── TicTacToe.csproj
+│
+├── Program.cs
+├── Board.cs
+├── Game.cs
+├── Player.cs
+│
+├── README.md
+│
+└── TicTacToe.Api
+    │
+    ├── TicTacToe.Api.csproj
+    ├── Program.cs
+    │
+    ├── Models
+    │   └── StartGameRequest.cs
+    │
+    ├── Services
+    │   └── GameService.cs
+    │
+    └── wwwroot
+        ├── index.html
+        ├── style.css
+        └── script.js
