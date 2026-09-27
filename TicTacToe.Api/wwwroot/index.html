@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Tic-Tac-Toe</h1>
+
+    <!-- Player Setup -->
+    <div id="player-setup" class="game-container">
+        <h2>Enter Player Names</h2>
+
+        <input id="player1"
+               type="text"
+               placeholder="Player 1 name">
+
+        <input id="player2"
+               type="text"
+               placeholder="Player 2 name">
+
+        <button onclick="startGame()">Start Game</button>
+    </div>
+
+
+    <!-- Game -->
+    <div id="game" class="game-container" style="display: none;">
+
+        <div id="board">
+            <button onclick="makeMove(0)"></button>
+            <button onclick="makeMove(1)"></button>
+            <button onclick="makeMove(2)"></button>
+
+            <button onclick="makeMove(3)"></button>
+            <button onclick="makeMove(4)"></button>
+            <button onclick="makeMove(5)"></button>
+
+            <button onclick="makeMove(6)"></button>
+            <button onclick="makeMove(7)"></button>
+            <button onclick="makeMove(8)"></button>
+        </div>
+
+        <p id="status"></p>
+
+        <button id="new-game-button" onclick="resetGame()">
+            New Game
+        </button>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

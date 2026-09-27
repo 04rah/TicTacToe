@@ -66,10 +66,27 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
-app.MapGet("/api/test", () =>
+app.MapPost("/api/game/reset", (
+    StartGameRequest request,
+    GameService gameService) =>
 {
-    return "Tic-Tac-Toe API is working!";
+    gameService.ResetGame(
+        request.Player1Name,
+        request.Player2Name);
+
+    Game game = gameService.GetGame();
+    Player player = game.GetCurrentPlayer();
+
+    return Results.Ok(new
+    {
+        board = game.GetBoard(),
+        status = "Playing",
+        nextPlayer = player.Name,
+        symbol = player.Symbol
+    });
 });
 
 app.Run();
